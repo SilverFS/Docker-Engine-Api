@@ -3,7 +3,35 @@
     <body class="bg">
         {% include 'navbar.html' %}
         
-        <div id="place_for_data">- LOADED DATA HERE -</div>
+        <table class="table table-dark table-striped table-hover">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Container ID</th>
+                <th scope="col">Image</th>
+                <th scope="col">Command</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody id="containerdata">
+               
+              
+            </tbody>
+          </table>
+
+          <table class="table table-dark table-stiped table-hover">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Service ID</th>
+                <th scope="col">Image</th>
+                <th scope="col">Command</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody id="servicedata">
+               
+              
+            </tbody>
+          </table>
         
 
 
@@ -18,8 +46,40 @@
                 $.ajax({
                     url: "/data",
                     type: "get",
+                    dataType: "json",
                     success: function(response) {
                     $("#place_for_data").html(response);
+                        //CONTAINERS TAB
+                        let containers = response.containers;
+                        
+                        //Maps the container variable
+                        let containerTable = containers.map(row => 
+                        `
+                        <tr>
+                            <td>${row.Id}</td>
+                            <td>${row.Image}</td>
+                            <td>${row.Command}</td>
+                            <td>${row.Status}</td>
+                        </tr>
+                        `
+                        ).join("");
+                        //Puts variable in html id
+                        $("#containerdata").html(containerTable );
+                        
+                        // SERVICES TAB
+                        let services = response.services;
+
+                        let ServiceTable = services.map(row => 
+                        `
+                        <tr>
+                            <td>${row.ID}</td>
+                            <td>${row.Spec.TaskTemplate.ContainerSpec.Image}</td>
+                            <td>${row.Spec.Name}</td>
+                        </tr>
+                        `
+                        ).join("");
+
+                        $("#servicedata").html(ServiceTable );
                     },
                     error: function(xhr) {
                     //Do Something to handle error

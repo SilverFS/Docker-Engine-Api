@@ -1,7 +1,7 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 import requests
 from requests.exceptions import HTTPError
-import jsonify
+
 
 app = Flask(__name__, static_url_path='/static')
 
@@ -21,12 +21,17 @@ def output():
 
 @app.route('/data', methods=['GET'])
 def parse_data():
-        request_data = requests.get('http://192.168.1.21:2376/containers/json')
-        response = request_data.json()
+        request_data = requests.get('https://api.shiruvaaa.net/containers/json')
+        request_data2 = requests.get('https://api.shiruvaaa.net/services')
+
+        response = {
+            "containers": request_data.json(),
+            "services": request_data2.json()
+        }
+
         
-      
-        
-        return render_template('data.html', datax = response)
+        #return render_template('data.html', datax = response)
+        return jsonify(response)
 
 
 
