@@ -1,0 +1,11 @@
+.bg-img {
+    /* Image location and min height of bg */
+    background-image: url("/static/images/bg-image-dark.jpg");
+    min-height: 100vh;
+    overflow: hidden;
+  
+    /* Set the position correctly */
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }

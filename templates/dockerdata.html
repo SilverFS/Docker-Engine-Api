@@ -1,0 +1,32 @@
+{% include 'standard.html' %}
+</head>
+    <body class="bg">
+        {% include 'navbar.html' %}
+        
+        <div id="place_for_data">- LOADED DATA HERE -</div>
+        
+
+
+
+
+
+        <!-- Loading script below: -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script>
+            /*Script with time interval to handle dynamic updates of variables-*/
+            var intervalId = window.setInterval(function(){
+                $.ajax({
+                    url: "/data",
+                    type: "get",
+                    success: function(response) {
+                    $("#place_for_data").html(response);
+                    },
+                    error: function(xhr) {
+                    //Do Something to handle error
+                    }
+                });
+            /*Miliseconds interval*/
+            }, 500);  
+        </script>
+    </body>
+</html>
