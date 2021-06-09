@@ -3,12 +3,17 @@ services:
     api-service:
         build: ./
         restart: always
-        container_name: docker-monitor
         ports: 
             - 5000:5000
         environment: 
             PORT: 5000
             FLASK_DEBUG: 1
+        environment:
+            AGENT_CLUSTER_ADDR: tasks.agent
+        networks:
+            - private
+        deploy:
+            mode: global
         deploy:
             placement:
                 constraints:
