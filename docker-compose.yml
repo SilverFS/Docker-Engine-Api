@@ -9,3 +9,16 @@ services:
         environment: 
             PORT: 5000
             FLASK_DEBUG: 1
+        deploy:
+            placement:
+                constraints:
+                - node.role == manager
+            labels:
+                - traefik.frontend.rule=Host:monitor.shiruvaaa.net
+                - traefik.enable=true
+                - traefik.port=5000
+                - traefik.tags=public
+                - traefik.docker.network=public
+                - traefik.redirectorservice.frontend.entryPoints=http
+                - traefik.redirectorservice.frontend.redirect.entryPoint=https
+                - traefik.webservice.frontend.entryPoints=https           
