@@ -1,0 +1,36 @@
+{% include 'standard.html' %}
+</head>
+    <body class="bg">
+        {% include 'navbar.html' %}
+      
+      </br>
+        <div class="content">
+            <div class="container">
+                <h2>Container list</h2>
+                <div class="row align-items-start">
+                    <table class="table table-dark table-stiped table-hover">
+                            <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Container Name</th>
+                                <th scope="col">Container ID</th>
+                                <th scope="col">Image</th>
+                                <th scope="col">Command</th>
+                                <th scope="col">Status</th>  
+                            </tr>
+                            </thead>
+                        <tbody id="containerdata"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+      
+               
+              
+
+
+
+        <!-- Loading script below: -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="/static/js/containers.js"></script>
+    </body>
+</html>
