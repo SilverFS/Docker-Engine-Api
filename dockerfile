@@ -10,4 +10,4 @@ RUN pipenv lock -r > requirements.txt && pip install -r requirements.txt && pip 
 
 COPY . .
 
-CMD [ "python", "./app.py" ]
+CMD [ "python", "./main.py" ]
