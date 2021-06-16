@@ -35,6 +35,7 @@ def images():
 
 @app.route('/data', methods=['GET'])
 def parse_data():
+        
         request_data = requests.get('http://192.168.1.21:2376/containers/json')
         request_data2 = requests.get('http://192.168.1.21:2376/services')
         request_data3 = requests.get('http://192.168.1.21:2376/nodes')
@@ -50,9 +51,7 @@ def parse_data():
             "images": request_data4.json(),
             "info": request_data5.json()
         }
-
-        
-        #return render_template('data.html', datax = response)
+      
         return jsonify(response)
 
 

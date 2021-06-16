@@ -3,31 +3,47 @@
     <body class="bg">
         {% include 'navbar.html' %}
     
+    
     </br>
     <div class="content">
         <div class="container">
             <h2>System Info</h2>
             <div class="row align-items-start">
                 <table class="table table-dark table-stiped table-hover">
-                    <thead class="thead-dark">
                     <tr>
-                        <th scope="col">Hostname</th>
-                        <th scope="col">ID</th>
-                        <th scope="col">Total Memory</th>
-                        <th scope="col"></th>
-                        <th scope="col">State</th>
-                        <th scope="col">Addr</th>  
+                        <th>systemtime</th>
+                        <td id="systemtime"></td>
                     </tr>
-                    </thead>
-                    <tbody id="systemdata"></tbody>
+                    <tr>
+                        <th>Hostname</th>
+                        <td id="name"></td>
+                        <th>Docker Version</th>
+                        <td id="serverversion"></td>
+                    </tr>
+                    <tr>
+                        <th>Swarm state</th>
+                        <td id="swarmstate"></td>
+                        <th>Total Memory</th>
+                        <td id="memtotal"></td>
+                    </tr>
+                    <tr>
+                        <th>Operating System</th>
+                        <td id="operatingsystem"></td>
+                        <th>Driver Status</th>
+                        <td id="driverstatus"></td>
+                    </tr>                
                 </table>
-                <p>This does not work yet...</p>
+                <table class="table table-dark table-stiped table-hover">
+                    <tr>
+                        <th>Alerts</th>
+                        <td id="warnings"></td>
+                    </tr>       
+                </table>
             </div>
         </div>
+    </div>
+    </br>
     
-
-</br>
-</br>
       
 
         <!-- Loading script below: -->

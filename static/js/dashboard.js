@@ -6,24 +6,18 @@ var intervalId = window.setInterval(function(){
         dataType: "json",
         success: function(response) {
         $("#place_for_data").html(response);
-           //INFO TAB
-           let info = response.info;
             
-           //Maps the info variable
-           let infoTable = info.map(row =>
-            `
-            <tr>
-                <td>${row.Description.Hostname} / ${row.Spec.Role}</td>
-                <td>${row.ID}</td>
-                <td>${(row.Description.Resources.MemoryBytes /(1024 ** 3)).toFixed(2)} GB</td>
-                <td> <i id="demo" class="fas fa-circle"></i> </td>
-                <td>${row.Status.State} / </td>
-                <td>${row.Status.Addr}</td>
-            </tr>
-            `
-            ).join("");
-            //Puts variable in html id
-            $("#systemdata").html(infoTable);    
+            //INFO TAB
+            let info = response.info;
+            
+            $("#systemtime").html(info.SystemTime);
+            $("#memtotal").html((info.MemTotal / 1024 / 1024 / 1024).toFixed(2) + " GB");
+            $("#name").html(info.Name);
+            $("#serverversion").html(info.ServerVersion);
+            $("#swarmstate").html(info.Swarm.LocalNodeState);
+            $("#warnings").html(info.Warnings);
+            $("#operatingsystem").html(info.OperatingSystem);
+            $("#driverstatus").html(info.DriverStatus);
         },
         error: function(xhr) {
         //Do Something to handle error
