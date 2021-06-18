@@ -1,5 +1,13 @@
 /*Script with time interval to handle dynamic updates of variables-*/
+refreshdata();
 var intervalId = window.setInterval(function(){
+    refreshdata()
+    /*Miliseconds interval*/
+}, 1000); 
+    
+    
+
+function refreshdata() {
     $.ajax({
         url: "/data",
         type: "get",
@@ -25,5 +33,4 @@ var intervalId = window.setInterval(function(){
         else    window.location.reload(window.stop()); 
         }
     });
-/*Miliseconds interval*/
-}, 1000); 
+}

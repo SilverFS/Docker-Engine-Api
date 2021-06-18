@@ -36,11 +36,12 @@ def images():
 @app.route('/data', methods=['GET'])
 def parse_data():
         
-        request_data = requests.get('http://192.168.1.21:2376/containers/json')
-        request_data2 = requests.get('http://192.168.1.21:2376/services')
-        request_data3 = requests.get('http://192.168.1.21:2376/nodes')
-        request_data4 = requests.get('http://192.168.1.21:2376/images/json')
-        request_data5 = requests.get('http://192.168.1.21:2376/info')
+        link = 'http://192.168.1.21:2376'
+        request_data = requests.get(f'{link}/containers/json')
+        request_data2 = requests.get(f'{link}/services')
+        request_data3 = requests.get(f'{link}/nodes')
+        request_data4 = requests.get(f'{link}/images/json')
+        request_data5 = requests.get(f'{link}/info')
         
         
         
@@ -69,5 +70,5 @@ def function_name(error):
     return render_template('500.html'),500
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port='5000', debug=True)
+    app.run(host='0.0.0.0', port='5000', debug=False)
     #serve(app, host='0.0.0.0', port=5000)
